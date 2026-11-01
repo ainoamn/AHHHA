@@ -1500,6 +1500,13 @@ a:focus-visible {
   font-weight: 700;
 }
 
+.travel-visit-count--home,
+.travel-detail-visit-badge--home {
+  border-color: rgba(120, 183, 151, 0.35);
+  background: rgba(55, 119, 90, 0.12);
+  color: #9ec9b4;
+}
+
 .travel-detail-flag-stage { position: relative; }
 
 .travel-detail-visit-badge {

@@ -36,18 +36,30 @@ export default function TravelDetail({
                 width={320}
                 height={240}
               />
-              <div className="travel-detail-visit-badge">
-                {isArabic
-                  ? `${country.visitCount} ${country.visitCount === 1 ? "زيارة" : "زيارات"}`
-                  : `${country.visitCount} ${country.visitCount === 1 ? "visit" : "visits"}`}
-              </div>
+              {country.isHome ? (
+                <div className="travel-detail-visit-badge travel-detail-visit-badge--home">
+                  {isArabic ? "مقر الإقامة" : "Residence"}
+                </div>
+              ) : (
+                <div className="travel-detail-visit-badge">
+                  {isArabic
+                    ? `${country.visitCount} ${country.visitCount === 1 ? "زيارة" : "زيارات"}`
+                    : `${country.visitCount} ${country.visitCount === 1 ? "visit" : "visits"}`}
+                </div>
+              )}
             </div>
             <div className="travel-detail-copy">
               <p className="eyebrow">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                {isArabic ? "تفاصيل الزيارة" : "Visit details"}
+                {country.isHome
+                  ? isArabic
+                    ? "الوطن"
+                    : "Homeland"
+                  : isArabic
+                    ? "تفاصيل الزيارة"
+                    : "Visit details"}
               </p>
-              <p className="travel-detail-year">{country.year}</p>
+              {!country.isHome ? <p className="travel-detail-year">{country.year}</p> : null}
               <h1>{country.name[language]}</h1>
               <p className="travel-detail-period">
                 {country.period ? country.period[language] : country.year}
@@ -72,7 +84,7 @@ export default function TravelDetail({
               ))}
             </div>
 
-            {country.visits.length > 0 ? (
+            {!country.isHome && country.visits.length > 0 ? (
               <div className="travel-visits-public">
                 <h3>{isArabic ? "سجل الزيارات" : "Visit log"}</h3>
                 {country.visits.map((visit) => (
@@ -88,9 +100,15 @@ export default function TravelDetail({
 
           <aside className="travel-aside">
             <div className="travel-aside-block">
-              <h3>{isArabic ? "عدد الزيارات" : "Visit count"}</h3>
+              <h3>{country.isHome ? (isArabic ? "الحالة" : "Status") : isArabic ? "عدد الزيارات" : "Visit count"}</h3>
               <ul>
-                <li>{country.visitCount}</li>
+                <li>
+                  {country.isHome
+                    ? isArabic
+                      ? "موطن ومقر إقامة"
+                      : "Homeland & residence"
+                    : country.visitCount}
+                </li>
               </ul>
             </div>
 

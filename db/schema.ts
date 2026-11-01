@@ -1,4 +1,5 @@
 import {
+  boolean,
   integer,
   jsonb,
   pgTable,
@@ -27,6 +28,7 @@ export const travelCountries = pgTable("travel_countries", {
   highlightsEn: jsonb("highlights_en").$type<string[]>().notNull().default([]),
   citiesAr: jsonb("cities_ar").$type<string[]>().notNull().default([]),
   citiesEn: jsonb("cities_en").$type<string[]>().notNull().default([]),
+  isHome: boolean("is_home").notNull().default(false),
   sortOrder: integer("sort_order").notNull().default(0),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),

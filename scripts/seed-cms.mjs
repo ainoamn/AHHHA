@@ -29,7 +29,7 @@ if (!databaseUrl) {
 const sql = neon(databaseUrl);
 
 const countries = [
-  ["oman", "om", "سلطنة عُمان", "Sultanate of Oman", "عُمان هي نقطة الانطلاق؛ منها بدأت الرحلات وإليها تعود الذكريات.", "Oman is the starting point—where journeys begin and memories return.", ["رحلات داخلية عبر المحافظات والمناطق الطبيعية."], ["Domestic trips across governorates and natural landscapes."], ["مسقط والمناطق"], ["Muscat & the regions"], ["مسقط", "صلالة", "نزوى"], ["Muscat", "Salalah", "Nizwa"], 1],
+  ["oman", "om", "سلطنة عُمان", "Sultanate of Oman", "سلطنة عُمان هي موطني ومقر إقامتي؛ منها انطلقت رحلتي، وإليها تعود كل الذكريات.", "The Sultanate of Oman is my homeland and place of residence—where my journey began and where every memory returns.", ["أقيم في عُمان، فهي ليست وجهة زيارة بل الوطن الذي أنطلق منه وأعود إليه.", "بين الجبال والسواحل والصحراء والمدن تتشكل ملامح الهوية والانتماء."], ["I live in Oman; it is not a travel destination but the homeland I leave from and return to.", "Across mountains, coasts, deserts and cities, identity and belonging take shape."], ["الوطن", "مقر الإقامة"], ["Homeland", "Place of residence"], ["مسقط", "المعبيلة"], ["Muscat", "Al Maabela"], 1, true],
   ["uae", "ae", "الإمارات العربية المتحدة", "United Arab Emirates", "زيارات جمعت بين العمل والاستكشاف في مدن حديثة.", "Visits combining work and exploration in modern cities.", ["الاطلاع على مراكز الأعمال والمعالم الحضرية."], ["Explored business centres and urban landmarks."], ["دبي وأبوظبي"], ["Dubai & Abu Dhabi"], ["دبي", "أبوظبي"], ["Dubai", "Abu Dhabi"], 2],
   ["saudi-arabia", "sa", "المملكة العربية السعودية", "Saudi Arabia", "زيارات تعكس القرب الخليجي والتحول الحضري.", "Visits that reflect Gulf closeness and urban transformation.", ["التعرّف على مشاريع التطوير وبيئة الأعمال."], ["Explored development projects and business environments."], ["تحول حضري"], ["Urban transformation"], ["الرياض", "جدة"], ["Riyadh", "Jeddah"], 3],
   ["bahrain", "bh", "البحرين", "Bahrain", "زيارة إلى المنامة بطابع خليجي قريب.", "A visit to Manama with close Gulf character.", ["استكشاف المدينة والأسواق والمعالم المحلية."], ["Explored the city, markets and local landmarks."], ["المنامة"], ["Manama"], ["المنامة"], ["Manama"], 4],
@@ -80,17 +80,17 @@ async function main() {
   await sql`DELETE FROM travel_countries`;
 
   for (const country of countries) {
-    const [slug, code, nameAr, nameEn, summaryAr, summaryEn, detailsAr, detailsEn, highlightsAr, highlightsEn, citiesAr, citiesEn, sortOrder] = country;
+    const [slug, code, nameAr, nameEn, summaryAr, summaryEn, detailsAr, detailsEn, highlightsAr, highlightsEn, citiesAr, citiesEn, sortOrder, isHome = false] = country;
     await sql`
       INSERT INTO travel_countries (
         slug, code, name_ar, name_en, summary_ar, summary_en,
-        details_ar, details_en, highlights_ar, highlights_en, cities_ar, cities_en, sort_order
+        details_ar, details_en, highlights_ar, highlights_en, cities_ar, cities_en, sort_order, is_home
       ) VALUES (
         ${slug}, ${code}, ${nameAr}, ${nameEn}, ${summaryAr}, ${summaryEn},
         ${JSON.stringify(detailsAr)}::jsonb, ${JSON.stringify(detailsEn)}::jsonb,
         ${JSON.stringify(highlightsAr)}::jsonb, ${JSON.stringify(highlightsEn)}::jsonb,
         ${JSON.stringify(citiesAr)}::jsonb, ${JSON.stringify(citiesEn)}::jsonb,
-        ${sortOrder}
+        ${sortOrder}, ${Boolean(isHome)}
       )
     `;
   }

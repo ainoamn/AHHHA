@@ -20,6 +20,7 @@ export type PublicTravelCountry = {
   highlights?: LocalizedText[];
   cities?: LocalizedText[];
   photos: { id?: number; src: string; alt: LocalizedText }[];
+  isHome: boolean;
   visitCount: number;
   visits: {
     id?: number;
@@ -38,32 +39,36 @@ function zipLocalized(ar: string[], en: string[]): LocalizedText[] {
 }
 
 function fromStatic(): PublicTravelCountry[] {
-  return staticTravelCountries.map((country) => ({
-    slug: country.slug,
-    code: country.code,
-    name: country.name,
-    year: country.year,
-    period: country.period,
-    summary: country.summary,
-    details: country.details,
-    highlights: country.highlights,
-    cities: country.cities,
-    photos: country.photos,
-    visitCount: country.year && country.year !== "—" ? 1 : 0,
-    visits:
-      country.year && country.year !== "—"
-        ? [
-            {
-              year: country.year,
-              places: {
-                ar: (country.cities || []).map((city) => city.ar).join("، "),
-                en: (country.cities || []).map((city) => city.en).join(", "),
+  return staticTravelCountries.map((country) => {
+    const isHome = Boolean(country.isHome);
+    return {
+      slug: country.slug,
+      code: country.code,
+      name: country.name,
+      year: isHome ? "—" : country.year,
+      period: country.period,
+      summary: country.summary,
+      details: country.details,
+      highlights: country.highlights,
+      cities: country.cities,
+      photos: country.photos,
+      isHome,
+      visitCount: isHome ? 0 : country.year && country.year !== "—" ? 1 : 0,
+      visits:
+        !isHome && country.year && country.year !== "—"
+          ? [
+              {
+                year: country.year,
+                places: {
+                  ar: (country.cities || []).map((city) => city.ar).join("، "),
+                  en: (country.cities || []).map((city) => city.en).join(", "),
+                },
+                notes: country.summary,
               },
-              notes: country.summary,
-            },
-          ]
-        : [],
-  }));
+            ]
+          : [],
+    };
+  });
 }
 
 export async function listPublicTravelCountries(): Promise<PublicTravelCountry[]> {
@@ -83,7 +88,8 @@ export async function listPublicTravelCountries(): Promise<PublicTravelCountry[]
     const photos = await db.select().from(travelPhotos).orderBy(asc(travelPhotos.sortOrder), asc(travelPhotos.id));
 
     return countries.map((country) => {
-      const countryVisits = visits.filter((visit) => visit.countryId === country.id);
+      const isHome = Boolean(country.isHome);
+      const countryVisits = isHome ? [] : visits.filter((visit) => visit.countryId === country.id);
       const countryPhotos = photos.filter((photo) => photo.countryId === country.id);
       const years = countryVisits.map((visit) => visit.year).filter(Boolean);
       const yearLabel = years.length > 0 ? years[years.length - 1] : "—";
@@ -94,10 +100,12 @@ export async function listPublicTravelCountries(): Promise<PublicTravelCountry[]
         code: country.code,
         name: { ar: country.nameAr, en: country.nameEn },
         year: yearLabel,
-        period: {
-          ar: years.length > 0 ? years.join(" · ") : "زيارات موثّقة",
-          en: years.length > 0 ? years.join(" · ") : "Documented visits",
-        },
+        period: isHome
+          ? { ar: "الوطن ومقر الإقامة", en: "Homeland & residence" }
+          : {
+              ar: years.length > 0 ? years.join(" · ") : "زيارات موثّقة",
+              en: years.length > 0 ? years.join(" · ") : "Documented visits",
+            },
         summary: { ar: country.summaryAr, en: country.summaryEn },
         details: zipLocalized(country.detailsAr || [], country.detailsEn || []),
         highlights: zipLocalized(country.highlightsAr || [], country.highlightsEn || []),
@@ -107,6 +115,7 @@ export async function listPublicTravelCountries(): Promise<PublicTravelCountry[]
           src: photo.src,
           alt: { ar: photo.altAr, en: photo.altEn },
         })),
+        isHome,
         visitCount: countryVisits.length,
         visits: countryVisits.map((visit) => ({
           id: visit.id,

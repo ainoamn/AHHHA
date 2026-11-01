@@ -63,6 +63,8 @@ export type TravelCountry = {
   details: LocalizedText[];
   highlights?: LocalizedText[];
   cities?: LocalizedText[];
+  /** Home/residence country — no visit count is shown. */
+  isHome?: boolean;
   /** Place image files under `public/travel/{slug}/` then list them here. */
   photos: TravelPhoto[];
 };
@@ -73,29 +75,29 @@ export const travelCountries: TravelCountry[] = [
     code: "om",
     name: { ar: "سلطنة عُمان", en: "Sultanate of Oman" },
     year: "—",
-    period: { ar: "الوطن والرحلات الداخلية", en: "Home & domestic journeys" },
+    period: { ar: "الوطن ومقر الإقامة", en: "Homeland & residence" },
+    isHome: true,
     summary: {
-      ar: "عُمان هي نقطة الانطلاق؛ منها بدأت الرحلات وإليها تعود الذكريات، بين الجبال والسواحل والصحراء والمدن.",
-      en: "Oman is the starting point—where journeys begin and memories return, across mountains, coasts, deserts and cities.",
+      ar: "سلطنة عُمان هي موطني ومقر إقامتي؛ منها انطلقت رحلتي، وإليها تعود كل الذكريات.",
+      en: "The Sultanate of Oman is my homeland and place of residence—where my journey began and where every memory returns.",
     },
     details: [
       {
-        ar: "رحلات داخلية عبر المحافظات والمناطق الطبيعية والمعالم الثقافية.",
-        en: "Domestic trips across governorates, natural landscapes and cultural landmarks.",
+        ar: "أقيم في عُمان، فهي ليست وجهة زيارة بل الوطن الذي أنطلق منه وأعود إليه.",
+        en: "I live in Oman; it is not a travel destination but the homeland I leave from and return to.",
       },
       {
-        ar: "تجربة الضيافة العُمانية والحياة اليومية كأساس لكل سفر لاحق.",
-        en: "Experiencing Omani hospitality and everyday life as the foundation for every later journey.",
+        ar: "بين الجبال والسواحل والصحراء والمدن تتشكل ملامح الهوية والانتماء.",
+        en: "Across mountains, coasts, deserts and cities, identity and belonging take shape.",
       },
     ],
     highlights: [
-      { ar: "مسقط والمناطق", en: "Muscat & the regions" },
-      { ar: "جبال وسواحل وصحراء", en: "Mountains, coasts & desert" },
+      { ar: "الوطن", en: "Homeland" },
+      { ar: "مقر الإقامة", en: "Place of residence" },
     ],
     cities: [
       { ar: "مسقط", en: "Muscat" },
-      { ar: "صلالة", en: "Salalah" },
-      { ar: "نزوى", en: "Nizwa" },
+      { ar: "المعبيلة", en: "Al Maabela" },
     ],
     photos: [],
   },

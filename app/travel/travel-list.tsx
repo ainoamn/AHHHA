@@ -50,13 +50,19 @@ export default function TravelList({ countries }: { countries: PublicTravelCount
                   />
                 </span>
                 <span className="travel-card-body">
-                  <small>{country.year}</small>
+                  <small>{country.isHome ? (isArabic ? "الوطن" : "Home") : country.year}</small>
                   <strong>{country.name[language]}</strong>
-                  <span className="travel-visit-count">
-                    {isArabic
-                      ? `${country.visitCount} ${country.visitCount === 1 ? "زيارة" : "زيارات"}`
-                      : `${country.visitCount} ${country.visitCount === 1 ? "visit" : "visits"}`}
-                  </span>
+                  {country.isHome ? (
+                    <span className="travel-visit-count travel-visit-count--home">
+                      {isArabic ? "مقر الإقامة" : "Place of residence"}
+                    </span>
+                  ) : (
+                    <span className="travel-visit-count">
+                      {isArabic
+                        ? `${country.visitCount} ${country.visitCount === 1 ? "زيارة" : "زيارات"}`
+                        : `${country.visitCount} ${country.visitCount === 1 ? "visit" : "visits"}`}
+                    </span>
+                  )}
                   <span>{country.period ? country.period[language] : country.year}</span>
                 </span>
               </Link>
