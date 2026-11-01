@@ -3,8 +3,16 @@ import "./globals.css";
 import { LanguageProvider } from "./components/language-provider";
 import { SiteChrome } from "./components/site-chrome";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://abdulhamid-alrawahi.ameed1.chatgpt.site");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abdulhamid-alrawahi.ameed1.chatgpt.site"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "عبد الحميد الرواحي | الملف الشخصي والسيرة المهنية",
     template: "%s | عبد الحميد الرواحي",
