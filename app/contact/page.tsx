@@ -25,7 +25,7 @@ export default function ContactPage() {
   return (
     <main id="main-content">
       <PageHero
-        number="07"
+        number="08"
         eyebrow={{ ar: "التواصل", en: "Contact" }}
         title={{ ar: "يسعدني التواصل وتبادل الخبرات والأفكار.", en: "I welcome conversations, shared experience and thoughtful ideas." }}
         lead={{ ar: "للتواصل المهني، أو مناقشة فرصة، أو مشروع يجمع الإدارة بالتقنية والتطوير؛ يمكن مراسلتي مباشرة عبر القنوات التالية.", en: "For professional conversations, opportunities or projects where administration meets technology and development, reach me directly through the channels below." }}

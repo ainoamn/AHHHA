@@ -43,8 +43,210 @@ export const navigation = [
   { href: "/vision", label: { ar: "التطلعات", en: "Vision" } },
   { href: "/achievements", label: { ar: "الإنجازات", en: "Achievements" } },
   { href: "/ventures", label: { ar: "الأعمال", en: "Ventures" } },
+  { href: "/travel", label: { ar: "السفر", en: "Travel" } },
   { href: "/contact", label: { ar: "تواصل", en: "Contact" } },
 ];
+
+export type TravelPhoto = {
+  src: string;
+  alt: LocalizedText;
+};
+
+export type TravelCountry = {
+  slug: string;
+  /** ISO 3166-1 alpha-2 country code used for the flag image. */
+  code: string;
+  name: LocalizedText;
+  year: string;
+  period?: LocalizedText;
+  summary: LocalizedText;
+  details: LocalizedText[];
+  highlights?: LocalizedText[];
+  cities?: LocalizedText[];
+  /** Place image files under `public/travel/{slug}/` then list them here. */
+  photos: TravelPhoto[];
+};
+
+export const travelCountries: TravelCountry[] = [
+  {
+    slug: "uae",
+    code: "ae",
+    name: { ar: "الإمارات العربية المتحدة", en: "United Arab Emirates" },
+    year: "2018",
+    period: { ar: "زيارات متعددة منذ 2018", en: "Multiple visits since 2018" },
+    summary: {
+      ar: "رحلة عمل واستكشاف جمعت بين دبي وأبوظبي؛ تعرفت فيها على بيئة أعمال نشطة ومعالم حضرية حديثة.",
+      en: "A work-and-discovery journey across Dubai and Abu Dhabi, combining an active business environment with modern city landmarks.",
+    },
+    details: [
+      {
+        ar: "زيارة مراكز الأعمال والمعارض والاطلاع على نماذج تشغيل حديثة في الخدمات والإدارة.",
+        en: "Visited business centres and exhibitions and observed modern operating models in services and administration.",
+      },
+      {
+        ar: "تجربة المدينة الحديثة من الواجهات البحرية إلى الأحياء الثقافية والأسواق.",
+        en: "Experienced the modern city—from waterfronts to cultural districts and markets.",
+      },
+    ],
+    highlights: [
+      { ar: "دبي وأبوظبي", en: "Dubai & Abu Dhabi" },
+      { ar: "بيئة أعمال متقدمة", en: "Advanced business environment" },
+    ],
+    cities: [
+      { ar: "دبي", en: "Dubai" },
+      { ar: "أبوظبي", en: "Abu Dhabi" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "saudi-arabia",
+    code: "sa",
+    name: { ar: "المملكة العربية السعودية", en: "Saudi Arabia" },
+    year: "2019",
+    period: { ar: "2019 وما بعدها", en: "2019 onwards" },
+    summary: {
+      ar: "زيارة جمعت بين الجانب العملي والتعرّف على التحول الحضري والاقتصادي في مدن المملكة.",
+      en: "A visit that combined practical purposes with discovering the urban and economic transformation across Saudi cities.",
+    },
+    details: [
+      {
+        ar: "التعرّف على بيئة أعمال آخذة في التوسع ومشاريع تطوير كبرى.",
+        en: "Explored a rapidly expanding business environment and major development projects.",
+      },
+      {
+        ar: "لحظات سفر تعكس القرب الثقافي والتنوع بين المدن والمناطق.",
+        en: "Travel moments that reflect cultural closeness and diversity between cities and regions.",
+      },
+    ],
+    highlights: [
+      { ar: "تحول حضري واقتصادي", en: "Urban & economic transformation" },
+      { ar: "قرب ثقافي", en: "Cultural closeness" },
+    ],
+    cities: [
+      { ar: "الرياض", en: "Riyadh" },
+      { ar: "جدة", en: "Jeddah" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "qatar",
+    code: "qa",
+    name: { ar: "قطر", en: "Qatar" },
+    year: "2022",
+    period: { ar: "2022", en: "2022" },
+    summary: {
+      ar: "زيارة قصيرة إلى الدوحة للاطلاع على المدينة الحديثة وتنظيم الفعاليات والمرافق العامة.",
+      en: "A short visit to Doha to experience the modern city, event organisation and public facilities.",
+    },
+    details: [
+      {
+        ar: "استكشاف الواجهة البحرية والمعالم الحديثة في الدوحة.",
+        en: "Explored the waterfront and modern landmarks in Doha.",
+      },
+      {
+        ar: "ملاحظة جودة التنظيم والمرافق في مدينة تستضيف فعاليات كبرى.",
+        en: "Noted the quality of organisation and facilities in a city that hosts major events.",
+      },
+    ],
+    highlights: [
+      { ar: "الدوحة", en: "Doha" },
+      { ar: "تنظيم ومرافق حديثة", en: "Modern organisation & facilities" },
+    ],
+    cities: [{ ar: "الدوحة", en: "Doha" }],
+    photos: [],
+  },
+  {
+    slug: "turkey",
+    code: "tr",
+    name: { ar: "تركيا", en: "Turkey" },
+    year: "2023",
+    period: { ar: "2023", en: "2023" },
+    summary: {
+      ar: "رحلة جمعت التاريخ والحياة اليومية بين إسطنبول ومدن أخرى؛ مزيج من الثقافة والأسواق والمعالم.",
+      en: "A journey blending history and everyday life across Istanbul and other cities—culture, markets and landmarks.",
+    },
+    details: [
+      {
+        ar: "زيارة المعالم التاريخية والأسواق التقليدية والتجول في أحياء المدينة القديمة والحديثة.",
+        en: "Visited historic landmarks and traditional markets, wandering through both old and modern neighbourhoods.",
+      },
+      {
+        ar: "تجربة الضيافة المحلية والمأكولات والمشاهد الطبيعية حول المدينة.",
+        en: "Experienced local hospitality, cuisine and natural views around the city.",
+      },
+    ],
+    highlights: [
+      { ar: "إسطنبول", en: "Istanbul" },
+      { ar: "تاريخ وثقافة", en: "History & culture" },
+    ],
+    cities: [
+      { ar: "إسطنبول", en: "Istanbul" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "egypt",
+    code: "eg",
+    name: { ar: "مصر", en: "Egypt" },
+    year: "2021",
+    period: { ar: "2021", en: "2021" },
+    summary: {
+      ar: "رحلة إلى أرض الحضارة؛ القاهرة والمعالم التاريخية التي تروي قصة آلاف السنين.",
+      en: "A journey to the land of civilisation—Cairo and historic landmarks that tell a story spanning millennia.",
+    },
+    details: [
+      {
+        ar: "زيارة المتاحف والمعالم الأثرية والتعرّف على عمق التاريخ المصري.",
+        en: "Visited museums and archaeological landmarks and experienced the depth of Egyptian history.",
+      },
+      {
+        ar: "مشاهدة إيقاع المدينة والأسواق والنيل كجزء من تجربة السفر.",
+        en: "Witnessed the city’s rhythm, markets and the Nile as part of the travel experience.",
+      },
+    ],
+    highlights: [
+      { ar: "القاهرة", en: "Cairo" },
+      { ar: "معالم تاريخية", en: "Historic landmarks" },
+    ],
+    cities: [{ ar: "القاهرة", en: "Cairo" }],
+    photos: [],
+  },
+  {
+    slug: "malaysia",
+    code: "my",
+    name: { ar: "ماليزيا", en: "Malaysia" },
+    year: "2024",
+    period: { ar: "2024", en: "2024" },
+    summary: {
+      ar: "رحلة إلى شرق آسيا جمعت بين كوالالمبور الحديثة والطبيعة والتنوع الثقافي.",
+      en: "A Southeast Asian journey combining modern Kuala Lumpur with nature and cultural diversity.",
+    },
+    details: [
+      {
+        ar: "استكشاف المدينة الحديثة والمعالم الشهيرة والأسواق المحلية.",
+        en: "Explored the modern city, famous landmarks and local markets.",
+      },
+      {
+        ar: "لحظات من الطبيعة والضيافة الآسيوية ضمن جدول سفر متوازن.",
+        en: "Moments of nature and Asian hospitality within a balanced travel itinerary.",
+      },
+    ],
+    highlights: [
+      { ar: "كوالالمبور", en: "Kuala Lumpur" },
+      { ar: "تنوع ثقافي وطبيعة", en: "Cultural diversity & nature" },
+    ],
+    cities: [{ ar: "كوالالمبور", en: "Kuala Lumpur" }],
+    photos: [],
+  },
+];
+
+export function getTravelCountry(slug: string) {
+  return travelCountries.find((country) => country.slug === slug);
+}
+
+export function getTravelFlagUrl(code: string, width = 160) {
+  return `https://flagcdn.com/w${width}/${code.toLowerCase()}.png`;
+}
 
 export const passions = [
   {

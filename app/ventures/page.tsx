@@ -59,7 +59,7 @@ export default function VenturesPage() {
         </div>
       </section>
 
-      <NextPage href="/contact" number="07" label={{ ar: "الصفحة التالية", en: "Next page" }} title={{ ar: "التواصل", en: "Contact" }} />
+      <NextPage href="/travel" number="07" label={{ ar: "الصفحة التالية", en: "Next page" }} title={{ ar: "السفر والدول", en: "Travel & countries" }} />
     </main>
   );
 }
