@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTravelCountry, travelCountries } from "../../site-content";
 import TravelDetail from "./travel-detail";
+import { getPublicTravelCountry, getTravelCountrySlugs, listPublicTravelCountries } from "../../../lib/travel-data";
 
 type TravelSlugPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return travelCountries.map((country) => ({ slug: country.slug }));
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  const slugs = await getTravelCountrySlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: TravelSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const country = getTravelCountry(slug);
+  const country = await getPublicTravelCountry(slug);
 
   if (!country) {
     return { title: "دولة غير موجودة" };
@@ -32,11 +35,14 @@ export async function generateMetadata({ params }: TravelSlugPageProps): Promise
 
 export default async function TravelSlugPage({ params }: TravelSlugPageProps) {
   const { slug } = await params;
-  const country = getTravelCountry(slug);
+  const [country, countries] = await Promise.all([
+    getPublicTravelCountry(slug),
+    listPublicTravelCountries(),
+  ]);
 
   if (!country) {
     notFound();
   }
 
-  return <TravelDetail country={country} />;
+  return <TravelDetail country={country} countries={countries} />;
 }

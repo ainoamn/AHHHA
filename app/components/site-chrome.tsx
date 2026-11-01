@@ -43,6 +43,10 @@ export function SiteChrome({ children }: { children: ReactNode }) {
 
   useEffect(() => setMenuOpen(false), [pathname]);
 
+  if (pathname?.startsWith("/admin")) {
+    return <>{children}</>;
+  }
+
   return (
     <div className="site-shell" dir={isArabic ? "rtl" : "ltr"} lang={language}>
       <a className="skip-link" href="#main-content">{isArabic ? "انتقل إلى المحتوى" : "Skip to content"}</a>

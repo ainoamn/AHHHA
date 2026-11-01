@@ -1,16 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import type { TravelCountry } from "../../site-content";
-import { getTravelFlagUrl, travelCountries } from "../../site-content";
+import { getTravelFlagUrl, type PublicTravelCountry } from "../../../lib/travel-data";
 import { useLanguage } from "../../components/language-provider";
 import { ArrowIcon } from "../../components/site-chrome";
 import { NextPage } from "../../components/page-elements";
 
-export default function TravelDetail({ country }: { country: TravelCountry }) {
+export default function TravelDetail({
+  country,
+  countries,
+}: {
+  country: PublicTravelCountry;
+  countries: PublicTravelCountry[];
+}) {
   const { language, isArabic } = useLanguage();
-  const index = travelCountries.findIndex((item) => item.slug === country.slug);
-  const nextCountry = travelCountries[(index + 1) % travelCountries.length];
+  const index = countries.findIndex((item) => item.slug === country.slug);
+  const nextCountry = countries[(index + 1) % countries.length];
 
   return (
     <main id="main-content">
@@ -31,6 +36,11 @@ export default function TravelDetail({ country }: { country: TravelCountry }) {
                 width={320}
                 height={240}
               />
+              <div className="travel-detail-visit-badge">
+                {isArabic
+                  ? `${country.visitCount} ${country.visitCount === 1 ? "زيارة" : "زيارات"}`
+                  : `${country.visitCount} ${country.visitCount === 1 ? "visit" : "visits"}`}
+              </div>
             </div>
             <div className="travel-detail-copy">
               <p className="eyebrow">
@@ -58,18 +68,38 @@ export default function TravelDetail({ country }: { country: TravelCountry }) {
             <h2>{isArabic ? "ماذا بقي من هذه الرحلة." : "What remains from this journey."}</h2>
             <div className="travel-detail-list">
               {country.details.map((detail) => (
-                <p key={detail.en}>{detail[language]}</p>
+                <p key={detail.en || detail.ar}>{detail[language]}</p>
               ))}
             </div>
+
+            {country.visits.length > 0 ? (
+              <div className="travel-visits-public">
+                <h3>{isArabic ? "سجل الزيارات" : "Visit log"}</h3>
+                {country.visits.map((visit) => (
+                  <article key={`${visit.year}-${visit.id || visit.places.en}`}>
+                    <strong>{visit.year}</strong>
+                    {visit.places[language] ? <p>{visit.places[language]}</p> : null}
+                    {visit.notes[language] ? <p>{visit.notes[language]}</p> : null}
+                  </article>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <aside className="travel-aside">
+            <div className="travel-aside-block">
+              <h3>{isArabic ? "عدد الزيارات" : "Visit count"}</h3>
+              <ul>
+                <li>{country.visitCount}</li>
+              </ul>
+            </div>
+
             {country.cities && country.cities.length > 0 ? (
               <div className="travel-aside-block">
                 <h3>{isArabic ? "المدن" : "Cities"}</h3>
                 <ul>
                   {country.cities.map((city) => (
-                    <li key={city.en}>{city[language]}</li>
+                    <li key={city.en || city.ar}>{city[language]}</li>
                   ))}
                 </ul>
               </div>
@@ -80,7 +110,7 @@ export default function TravelDetail({ country }: { country: TravelCountry }) {
                 <h3>{isArabic ? "أبرز المحطات" : "Highlights"}</h3>
                 <ul>
                   {country.highlights.map((item) => (
-                    <li key={item.en}>{item[language]}</li>
+                    <li key={item.en || item.ar}>{item[language]}</li>
                   ))}
                 </ul>
               </div>
@@ -110,7 +140,7 @@ export default function TravelDetail({ country }: { country: TravelCountry }) {
           {country.photos.length > 0 ? (
             <div className="travel-photo-grid">
               {country.photos.map((photo) => (
-                <figure className="travel-photo" key={photo.src}>
+                <figure className="travel-photo" key={photo.src + (photo.id || "")}>
                   <img src={photo.src} alt={photo.alt[language]} loading="lazy" />
                   <figcaption>{photo.alt[language]}</figcaption>
                 </figure>
@@ -120,22 +150,22 @@ export default function TravelDetail({ country }: { country: TravelCountry }) {
             <div className="travel-photo-empty">
               <p>
                 {isArabic
-                  ? "يمكنك إضافة صور هذه الدولة داخل المجلد public/travel/" +
-                    country.slug +
-                    " ثم تسجيلها في site-content.ts لتظهر للجمهور."
-                  : `Add photos for this country in public/travel/${country.slug}, then list them in site-content.ts to show them publicly.`}
+                  ? "يمكن رفع صور هذه الدولة من لوحة التحكم Admin."
+                  : "Photos for this country can be uploaded from the Admin panel."}
               </p>
             </div>
           )}
         </div>
       </section>
 
-      <NextPage
-        href={`/travel/${nextCountry.slug}`}
-        number={String((index + 1) % travelCountries.length + 1).padStart(2, "0")}
-        label={{ ar: "الدولة التالية", en: "Next country" }}
-        title={nextCountry.name}
-      />
+      {nextCountry ? (
+        <NextPage
+          href={`/travel/${nextCountry.slug}`}
+          number={String(((index + 1) % countries.length) + 1).padStart(2, "0")}
+          label={{ ar: "الدولة التالية", en: "Next country" }}
+          title={nextCountry.name}
+        />
+      ) : null}
     </main>
   );
 }
