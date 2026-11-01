@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="AHHA">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8d4a7"/>
+      <stop offset="45%" stop-color="#d8bd83"/>
+      <stop offset="100%" stop-color="#c5a15f"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0b2b2e"/>
+      <stop offset="100%" stop-color="#041215"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="240" height="240" fill="url(#ink)"/>
+
+  <!-- corner marks -->
+  <path d="M28 52 V28 H52" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <path d="M188 28 H212 V52" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <path d="M28 188 V212 H52" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <path d="M188 212 H212 V188" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- outer thin square -->
+  <rect x="34" y="34" width="172" height="172" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.35"/>
+
+  <!-- diamond frames -->
+  <path d="M120 48 L192 120 L120 192 L48 120 Z" fill="none" stroke="url(#gold)" stroke-width="2.2"/>
+  <path d="M120 62 L178 120 L120 178 L62 120 Z" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.65"/>
+
+  <!-- monogram -->
+  <text
+    x="120"
+    y="128"
+    text-anchor="middle"
+    fill="url(#gold)"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    letter-spacing="4"
+    font-weight="600"
+  >AHHA</text>
+
+  <!-- small accent dots -->
+  <circle cx="120" cy="48" r="2.2" fill="url(#gold)"/>
+  <circle cx="192" cy="120" r="2.2" fill="url(#gold)"/>
+  <circle cx="120" cy="192" r="2.2" fill="url(#gold)"/>
+  <circle cx="48" cy="120" r="2.2" fill="url(#gold)"/>
+</svg>

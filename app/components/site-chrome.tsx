@@ -54,7 +54,9 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand" href="/" aria-label={profile.shortName[language]}>
-            <span className="brand-mark">AHHA</span>
+            <span className="brand-mark" aria-hidden="true">
+              <img src="/logo-ahhha.svg" alt="" width={50} height={50} />
+            </span>
             <span className="brand-copy">
               <strong>{profile.shortName[language]}</strong>
               <small>{isArabic ? "ملف شخصي • سيرة مهنية" : "PERSONAL PROFILE • CV"}</small>
@@ -96,7 +98,9 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <footer className="site-footer">
         <div className="container footer-main">
           <Link className="brand footer-brand" href="/">
-            <span className="brand-mark">AHHA</span>
+            <span className="brand-mark" aria-hidden="true">
+              <img src="/logo-ahhha.svg" alt="" width={50} height={50} />
+            </span>
             <span className="brand-copy"><strong>{profile.shortName[language]}</strong><small>LEAD • BUILD • DEVELOP</small></span>
           </Link>
           <p>{isArabic ? "خبرة إدارية، شغف بالتطوير، ورؤية تبني للمستقبل." : "Administrative experience, a passion for development and a vision built for the future."}</p>
