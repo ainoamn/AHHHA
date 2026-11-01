@@ -69,28 +69,59 @@ export type TravelCountry = {
 
 export const travelCountries: TravelCountry[] = [
   {
-    slug: "uae",
-    code: "ae",
-    name: { ar: "الإمارات العربية المتحدة", en: "United Arab Emirates" },
-    year: "2018",
-    period: { ar: "زيارات متعددة منذ 2018", en: "Multiple visits since 2018" },
+    slug: "oman",
+    code: "om",
+    name: { ar: "سلطنة عُمان", en: "Sultanate of Oman" },
+    year: "—",
+    period: { ar: "الوطن والرحلات الداخلية", en: "Home & domestic journeys" },
     summary: {
-      ar: "رحلة عمل واستكشاف جمعت بين دبي وأبوظبي؛ تعرفت فيها على بيئة أعمال نشطة ومعالم حضرية حديثة.",
-      en: "A work-and-discovery journey across Dubai and Abu Dhabi, combining an active business environment with modern city landmarks.",
+      ar: "عُمان هي نقطة الانطلاق؛ منها بدأت الرحلات وإليها تعود الذكريات، بين الجبال والسواحل والصحراء والمدن.",
+      en: "Oman is the starting point—where journeys begin and memories return, across mountains, coasts, deserts and cities.",
     },
     details: [
       {
-        ar: "زيارة مراكز الأعمال والمعارض والاطلاع على نماذج تشغيل حديثة في الخدمات والإدارة.",
-        en: "Visited business centres and exhibitions and observed modern operating models in services and administration.",
+        ar: "رحلات داخلية عبر المحافظات والمناطق الطبيعية والمعالم الثقافية.",
+        en: "Domestic trips across governorates, natural landscapes and cultural landmarks.",
       },
       {
-        ar: "تجربة المدينة الحديثة من الواجهات البحرية إلى الأحياء الثقافية والأسواق.",
-        en: "Experienced the modern city—from waterfronts to cultural districts and markets.",
+        ar: "تجربة الضيافة العُمانية والحياة اليومية كأساس لكل سفر لاحق.",
+        en: "Experiencing Omani hospitality and everyday life as the foundation for every later journey.",
+      },
+    ],
+    highlights: [
+      { ar: "مسقط والمناطق", en: "Muscat & the regions" },
+      { ar: "جبال وسواحل وصحراء", en: "Mountains, coasts & desert" },
+    ],
+    cities: [
+      { ar: "مسقط", en: "Muscat" },
+      { ar: "صلالة", en: "Salalah" },
+      { ar: "نزوى", en: "Nizwa" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "uae",
+    code: "ae",
+    name: { ar: "الإمارات العربية المتحدة", en: "United Arab Emirates" },
+    year: "—",
+    period: { ar: "زيارات متعددة", en: "Multiple visits" },
+    summary: {
+      ar: "زيارات جمعت بين العمل والاستكشاف في مدن حديثة نابضة بالحركة وبيئة أعمال متقدمة.",
+      en: "Visits combining work and exploration in modern, energetic cities with an advanced business environment.",
+    },
+    details: [
+      {
+        ar: "الاطلاع على مراكز الأعمال والمعالم الحضرية والأسواق الحديثة.",
+        en: "Explored business centres, urban landmarks and modern markets.",
+      },
+      {
+        ar: "تجربة المدينة من الواجهات البحرية إلى الأحياء الثقافية.",
+        en: "Experienced the city from waterfronts to cultural districts.",
       },
     ],
     highlights: [
       { ar: "دبي وأبوظبي", en: "Dubai & Abu Dhabi" },
-      { ar: "بيئة أعمال متقدمة", en: "Advanced business environment" },
+      { ar: "بيئة أعمال حديثة", en: "Modern business environment" },
     ],
     cities: [
       { ar: "دبي", en: "Dubai" },
@@ -102,25 +133,25 @@ export const travelCountries: TravelCountry[] = [
     slug: "saudi-arabia",
     code: "sa",
     name: { ar: "المملكة العربية السعودية", en: "Saudi Arabia" },
-    year: "2019",
-    period: { ar: "2019 وما بعدها", en: "2019 onwards" },
+    year: "—",
+    period: { ar: "زيارات موثّقة", en: "Documented visits" },
     summary: {
-      ar: "زيارة جمعت بين الجانب العملي والتعرّف على التحول الحضري والاقتصادي في مدن المملكة.",
-      en: "A visit that combined practical purposes with discovering the urban and economic transformation across Saudi cities.",
+      ar: "زيارات تعكس القرب الخليجي والتعرّف على التحول الحضري والاقتصادي في مدن المملكة.",
+      en: "Visits that reflect Gulf closeness and the urban and economic transformation across Saudi cities.",
     },
     details: [
       {
-        ar: "التعرّف على بيئة أعمال آخذة في التوسع ومشاريع تطوير كبرى.",
-        en: "Explored a rapidly expanding business environment and major development projects.",
+        ar: "التعرّف على مشاريع التطوير وبيئة أعمال آخذة في التوسع.",
+        en: "Explored development projects and a rapidly expanding business environment.",
       },
       {
-        ar: "لحظات سفر تعكس القرب الثقافي والتنوع بين المدن والمناطق.",
-        en: "Travel moments that reflect cultural closeness and diversity between cities and regions.",
+        ar: "لحظات سفر تجمع بين المدن الحديثة والعمق الثقافي.",
+        en: "Travel moments that combine modern cities with cultural depth.",
       },
     ],
     highlights: [
-      { ar: "تحول حضري واقتصادي", en: "Urban & economic transformation" },
-      { ar: "قرب ثقافي", en: "Cultural closeness" },
+      { ar: "تحول حضري", en: "Urban transformation" },
+      { ar: "قرب ثقافي خليجي", en: "Gulf cultural closeness" },
     ],
     cities: [
       { ar: "الرياض", en: "Riyadh" },
@@ -129,97 +160,155 @@ export const travelCountries: TravelCountry[] = [
     photos: [],
   },
   {
-    slug: "qatar",
-    code: "qa",
-    name: { ar: "قطر", en: "Qatar" },
-    year: "2022",
-    period: { ar: "2022", en: "2022" },
+    slug: "bahrain",
+    code: "bh",
+    name: { ar: "البحرين", en: "Bahrain" },
+    year: "—",
+    period: { ar: "زيارة خليجية", en: "Gulf visit" },
     summary: {
-      ar: "زيارة قصيرة إلى الدوحة للاطلاع على المدينة الحديثة وتنظيم الفعاليات والمرافق العامة.",
-      en: "A short visit to Doha to experience the modern city, event organisation and public facilities.",
+      ar: "زيارة إلى المنامة؛ مدينة قريبة روحًا، تجمع بين الطابع الخليجي والمعالم الحديثة.",
+      en: "A visit to Manama—a close-spirited city combining Gulf character with modern landmarks.",
     },
     details: [
       {
-        ar: "استكشاف الواجهة البحرية والمعالم الحديثة في الدوحة.",
-        en: "Explored the waterfront and modern landmarks in Doha.",
+        ar: "استكشاف المدينة والأسواق والمعالم المحلية.",
+        en: "Explored the city, markets and local landmarks.",
       },
       {
-        ar: "ملاحظة جودة التنظيم والمرافق في مدينة تستضيف فعاليات كبرى.",
-        en: "Noted the quality of organisation and facilities in a city that hosts major events.",
+        ar: "تجربة القرب الجغرافي والثقافي داخل منظومة الخليج.",
+        en: "Experienced geographic and cultural closeness within the Gulf.",
+      },
+    ],
+    highlights: [
+      { ar: "المنامة", en: "Manama" },
+      { ar: "طابع خليجي مميز", en: "Distinct Gulf character" },
+    ],
+    cities: [{ ar: "المنامة", en: "Manama" }],
+    photos: [],
+  },
+  {
+    slug: "qatar",
+    code: "qa",
+    name: { ar: "قطر", en: "Qatar" },
+    year: "—",
+    period: { ar: "زيارة إلى الدوحة", en: "Visit to Doha" },
+    summary: {
+      ar: "زيارة إلى الدوحة للاطلاع على المدينة الحديثة وتنظيمها ومرافقها العامة.",
+      en: "A visit to Doha to experience the modern city, its organisation and public facilities.",
+    },
+    details: [
+      {
+        ar: "استكشاف الواجهة البحرية والمعالم الحديثة.",
+        en: "Explored the waterfront and modern landmarks.",
+      },
+      {
+        ar: "ملاحظة جودة التنظيم في مدينة تستضيف فعاليات كبرى.",
+        en: "Noted the quality of organisation in a city that hosts major events.",
       },
     ],
     highlights: [
       { ar: "الدوحة", en: "Doha" },
-      { ar: "تنظيم ومرافق حديثة", en: "Modern organisation & facilities" },
+      { ar: "مرافق وتنظيم حديث", en: "Modern facilities & organisation" },
     ],
     cities: [{ ar: "الدوحة", en: "Doha" }],
     photos: [],
   },
   {
-    slug: "turkey",
-    code: "tr",
-    name: { ar: "تركيا", en: "Turkey" },
-    year: "2023",
-    period: { ar: "2023", en: "2023" },
+    slug: "jordan",
+    code: "jo",
+    name: { ar: "الأردن", en: "Jordan" },
+    year: "—",
+    period: { ar: "رحلة إلى بلاد الشام", en: "Levant journey" },
     summary: {
-      ar: "رحلة جمعت التاريخ والحياة اليومية بين إسطنبول ومدن أخرى؛ مزيج من الثقافة والأسواق والمعالم.",
-      en: "A journey blending history and everyday life across Istanbul and other cities—culture, markets and landmarks.",
+      ar: "رحلة إلى الأردن؛ بلد يجمع بين عمّان الحديثة والمعالم التاريخية والطبيعة المتنوعة.",
+      en: "A journey to Jordan—a country that combines modern Amman with historic landmarks and diverse nature.",
     },
     details: [
       {
-        ar: "زيارة المعالم التاريخية والأسواق التقليدية والتجول في أحياء المدينة القديمة والحديثة.",
-        en: "Visited historic landmarks and traditional markets, wandering through both old and modern neighbourhoods.",
+        ar: "زيارة العاصمة والتعرّف على إيقاع المدينة والضيافة الأردنية.",
+        en: "Visited the capital and experienced the city’s rhythm and Jordanian hospitality.",
       },
       {
-        ar: "تجربة الضيافة المحلية والمأكولات والمشاهد الطبيعية حول المدينة.",
-        en: "Experienced local hospitality, cuisine and natural views around the city.",
+        ar: "الاطلاع على معالم تاريخية وطبيعية ضمن مسار السفر.",
+        en: "Explored historic and natural landmarks along the travel route.",
       },
     ],
     highlights: [
-      { ar: "إسطنبول", en: "Istanbul" },
-      { ar: "تاريخ وثقافة", en: "History & culture" },
+      { ar: "عمّان", en: "Amman" },
+      { ar: "تاريخ وطبيعة", en: "History & nature" },
+    ],
+    cities: [{ ar: "عمّان", en: "Amman" }],
+    photos: [],
+  },
+  {
+    slug: "iran",
+    code: "ir",
+    name: { ar: "إيران", en: "Iran" },
+    year: "—",
+    period: { ar: "رحلة ثقافية", en: "Cultural journey" },
+    summary: {
+      ar: "زيارة إلى إيران؛ تجربة غنية بالتاريخ والعمارة والأسواق والثقافة اليومية.",
+      en: "A visit to Iran—an experience rich in history, architecture, markets and everyday culture.",
+    },
+    details: [
+      {
+        ar: "استكشاف المعالم التاريخية والأسواق التقليدية.",
+        en: "Explored historic landmarks and traditional markets.",
+      },
+      {
+        ar: "التعرّف على الضيافة المحلية وتنوع المدن والمناطق.",
+        en: "Experienced local hospitality and the diversity of cities and regions.",
+      },
+    ],
+    highlights: [
+      { ar: "تاريخ وعمارة", en: "History & architecture" },
+      { ar: "أسواق وثقافة", en: "Markets & culture" },
     ],
     cities: [
-      { ar: "إسطنبول", en: "Istanbul" },
+      { ar: "طهران", en: "Tehran" },
+      { ar: "أصفهان", en: "Isfahan" },
     ],
     photos: [],
   },
   {
-    slug: "egypt",
-    code: "eg",
-    name: { ar: "مصر", en: "Egypt" },
-    year: "2021",
-    period: { ar: "2021", en: "2021" },
+    slug: "india",
+    code: "in",
+    name: { ar: "الهند", en: "India" },
+    year: "—",
+    period: { ar: "رحلة إلى جنوب آسيا", en: "South Asia journey" },
     summary: {
-      ar: "رحلة إلى أرض الحضارة؛ القاهرة والمعالم التاريخية التي تروي قصة آلاف السنين.",
-      en: "A journey to the land of civilisation—Cairo and historic landmarks that tell a story spanning millennia.",
+      ar: "زيارة إلى الهند؛ بلد يتسم بالتنوع الكبير في الناس والألوان والأسواق والحياة اليومية.",
+      en: "A visit to India—a country marked by extraordinary diversity in people, colours, markets and everyday life.",
     },
     details: [
       {
-        ar: "زيارة المتاحف والمعالم الأثرية والتعرّف على عمق التاريخ المصري.",
-        en: "Visited museums and archaeological landmarks and experienced the depth of Egyptian history.",
+        ar: "تجربة إيقاع المدن والأسواق والتنوع الثقافي.",
+        en: "Experienced the rhythm of cities, markets and cultural diversity.",
       },
       {
-        ar: "مشاهدة إيقاع المدينة والأسواق والنيل كجزء من تجربة السفر.",
-        en: "Witnessed the city’s rhythm, markets and the Nile as part of the travel experience.",
+        ar: "لحظات سفر تعكس ثراء الهند الاجتماعي والبصري.",
+        en: "Travel moments that reflect India’s social and visual richness.",
       },
     ],
     highlights: [
-      { ar: "القاهرة", en: "Cairo" },
-      { ar: "معالم تاريخية", en: "Historic landmarks" },
+      { ar: "تنوع ثقافي", en: "Cultural diversity" },
+      { ar: "مدن وأسواق", en: "Cities & markets" },
     ],
-    cities: [{ ar: "القاهرة", en: "Cairo" }],
+    cities: [
+      { ar: "دلهي", en: "Delhi" },
+      { ar: "مومباي", en: "Mumbai" },
+    ],
     photos: [],
   },
   {
     slug: "malaysia",
     code: "my",
     name: { ar: "ماليزيا", en: "Malaysia" },
-    year: "2024",
-    period: { ar: "2024", en: "2024" },
+    year: "—",
+    period: { ar: "رحلة إلى شرق آسيا", en: "Southeast Asia journey" },
     summary: {
-      ar: "رحلة إلى شرق آسيا جمعت بين كوالالمبور الحديثة والطبيعة والتنوع الثقافي.",
-      en: "A Southeast Asian journey combining modern Kuala Lumpur with nature and cultural diversity.",
+      ar: "رحلة إلى ماليزيا جمعت بين كوالالمبور الحديثة والطبيعة والتنوع الثقافي.",
+      en: "A journey to Malaysia combining modern Kuala Lumpur with nature and cultural diversity.",
     },
     details: [
       {
@@ -228,7 +317,7 @@ export const travelCountries: TravelCountry[] = [
       },
       {
         ar: "لحظات من الطبيعة والضيافة الآسيوية ضمن جدول سفر متوازن.",
-        en: "Moments of nature and Asian hospitality within a balanced travel itinerary.",
+        en: "Moments of nature and Asian hospitality within a balanced itinerary.",
       },
     ],
     highlights: [
@@ -236,6 +325,153 @@ export const travelCountries: TravelCountry[] = [
       { ar: "تنوع ثقافي وطبيعة", en: "Cultural diversity & nature" },
     ],
     cities: [{ ar: "كوالالمبور", en: "Kuala Lumpur" }],
+    photos: [],
+  },
+  {
+    slug: "sri-lanka",
+    code: "lk",
+    name: { ar: "سريلانكا", en: "Sri Lanka" },
+    year: "—",
+    period: { ar: "رحلة جزيرية", en: "Island journey" },
+    summary: {
+      ar: "زيارة إلى سريلانكا؛ جزيرة تجمع بين السواحل والخضرة والمعابد والطابع الهادئ.",
+      en: "A visit to Sri Lanka—an island of coasts, greenery, temples and a calm character.",
+    },
+    details: [
+      {
+        ar: "استكشاف الطبيعة والسواحل والمعالم المحلية.",
+        en: "Explored nature, coasts and local landmarks.",
+      },
+      {
+        ar: "تجربة إيقاع الجزيرة والضيافة البسيطة الدافئة.",
+        en: "Experienced the island’s rhythm and warm, simple hospitality.",
+      },
+    ],
+    highlights: [
+      { ar: "سواحل وطبيعة", en: "Coasts & nature" },
+      { ar: "ثقافة محلية", en: "Local culture" },
+    ],
+    cities: [
+      { ar: "كولومبو", en: "Colombo" },
+      { ar: "كاندي", en: "Kandy" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "kazakhstan",
+    code: "kz",
+    name: { ar: "كازاخستان", en: "Kazakhstan" },
+    year: "—",
+    period: { ar: "رحلة إلى آسيا الوسطى", en: "Central Asia journey" },
+    summary: {
+      ar: "زيارة إلى كازاخستان؛ بلد واسع يجمع بين المدن الحديثة واتساع السهول والطابع الأوراسي.",
+      en: "A visit to Kazakhstan—a vast country combining modern cities, open steppes and a Eurasian character.",
+    },
+    details: [
+      {
+        ar: "التعرّف على المدن الحديثة وإيقاع الحياة المحلية.",
+        en: "Discovered modern cities and the local rhythm of life.",
+      },
+      {
+        ar: "لحظات سفر تعكس اتساع المكان والتنوع الجغرافي.",
+        en: "Travel moments that reflect the scale of the land and geographic diversity.",
+      },
+    ],
+    highlights: [
+      { ar: "مدن حديثة", en: "Modern cities" },
+      { ar: "اتساع جغرافي", en: "Geographic expanse" },
+    ],
+    cities: [
+      { ar: "أستانا", en: "Astana" },
+      { ar: "ألماتي", en: "Almaty" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "kyrgyzstan",
+    code: "kg",
+    name: { ar: "قيرغيزستان", en: "Kyrgyzstan" },
+    year: "—",
+    period: { ar: "رحلة جبلية", en: "Mountain journey" },
+    summary: {
+      ar: "زيارة إلى قيرغيزستان؛ بلد الجبال والبحيرات والطبيعة المفتوحة والضيافة في آسيا الوسطى.",
+      en: "A visit to Kyrgyzstan—a land of mountains, lakes, open nature and Central Asian hospitality.",
+    },
+    details: [
+      {
+        ar: "استكشاف المشاهد الجبلية والطبيعة المحيطة بالمدن.",
+        en: "Explored mountain landscapes and nature around the cities.",
+      },
+      {
+        ar: "تجربة الطابع المحلي الهادئ والضيافة التقليدية.",
+        en: "Experienced the calm local character and traditional hospitality.",
+      },
+    ],
+    highlights: [
+      { ar: "جبال وبحيرات", en: "Mountains & lakes" },
+      { ar: "طبيعة مفتوحة", en: "Open nature" },
+    ],
+    cities: [
+      { ar: "بيشكك", en: "Bishkek" },
+      { ar: "إسيك كول", en: "Issyk-Kul" },
+    ],
+    photos: [],
+  },
+  {
+    slug: "azerbaijan",
+    code: "az",
+    name: { ar: "أذربيجان", en: "Azerbaijan" },
+    year: "—",
+    period: { ar: "رحلة إلى القوقاز", en: "Caucasus journey" },
+    summary: {
+      ar: "زيارة إلى أذربيجان؛ باكو الحديثة وملامح القوقاز بين البحر والمدينة والتاريخ.",
+      en: "A visit to Azerbaijan—modern Baku and Caucasian character between sea, city and history.",
+    },
+    details: [
+      {
+        ar: "استكشاف باكو القديمة والحديثة والواجهة البحرية.",
+        en: "Explored old and modern Baku and the waterfront.",
+      },
+      {
+        ar: "التعرّف على مزيج العمارة والثقافة المحلية.",
+        en: "Discovered a blend of architecture and local culture.",
+      },
+    ],
+    highlights: [
+      { ar: "باكو", en: "Baku" },
+      { ar: "مدينة وتاريخ", en: "City & history" },
+    ],
+    cities: [{ ar: "باكو", en: "Baku" }],
+    photos: [],
+  },
+  {
+    slug: "georgia",
+    code: "ge",
+    name: { ar: "جورجيا", en: "Georgia" },
+    year: "—",
+    period: { ar: "رحلة إلى القوقاز", en: "Caucasus journey" },
+    summary: {
+      ar: "زيارة إلى جورجيا؛ بلد يجمع بين تبليسي العريقة والجبال والضيافة الدافئة.",
+      en: "A visit to Georgia—a country combining historic Tbilisi, mountains and warm hospitality.",
+    },
+    details: [
+      {
+        ar: "التجوال في تبليسي بين الأحياء القديمة والمعالم الحديثة.",
+        en: "Wandered through Tbilisi’s old neighbourhoods and modern landmarks.",
+      },
+      {
+        ar: "تجربة الطبيعة الجبلية والضيافة الجورجية.",
+        en: "Experienced mountain nature and Georgian hospitality.",
+      },
+    ],
+    highlights: [
+      { ar: "تبليسي", en: "Tbilisi" },
+      { ar: "جبال وضيافة", en: "Mountains & hospitality" },
+    ],
+    cities: [
+      { ar: "تبليسي", en: "Tbilisi" },
+      { ar: "باتومي", en: "Batumi" },
+    ],
     photos: [],
   },
 ];
